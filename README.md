@@ -1,4 +1,4 @@
-# Online Retail – Customer Value & RFM Segmentation
+# Online Retail: Customer Value & RFM Segmentation
 
 **Goal:** Identify which customers and products drive most revenue, and turn that into clear, actionable segments for targeted marketing and retention.
 
