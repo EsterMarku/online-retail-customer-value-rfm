@@ -36,30 +36,23 @@ Two years of UK-based online retail transaction data, including invoices, produc
 
 ---
 
-## Reproducibility (Run Locally)
+## Reproducibility (Jupyter Notebook)
 
-### 1) Set up environment
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+This analysis was conducted using **Python in Jupyter Notebook**.
+
+### How to run locally
+1. Download the dataset from the UCI link above.
+2. Place the Excel file locally at:
+   ```text
+   data/raw/online_retail_II.xlsx
 ````
 
-### 2) Download the dataset
+3. Open the notebook:
 
-Download the Excel file from the UCI link above and place it locally at:
-
-```text
-data/raw/online_retail_II.xlsx
-```
-
-### 3) Run the analysis
-
-Open and run:
-
-```text
-notebooks/online_retail_customer_value_rfm_analysis.ipynb
-```
+   ```text
+   notebooks/online_retail_customer_value_rfm_analysis.ipynb
+   ```
+4. Run all cells from top to bottom.
 
 The notebook performs:
 
@@ -70,12 +63,13 @@ The notebook performs:
 
 ---
 
-## Skills Demonstrated
+## Tools & Skills Demonstrated
 
-* Customer analytics & segmentation (RFM)
+* Python (pandas, numpy, matplotlib, seaborn)
+* Jupyter Notebook
+* Customer analytics & RFM segmentation
 * Revenue concentration analysis (Pareto / Lorenz)
-* Data cleaning and validation
-* Business-oriented data visualisation
+* Business-focused data visualisation
 * Translating transactional data into strategic insights
 
 ---
@@ -84,6 +78,3 @@ The notebook performs:
 
 **Ester Marku**
 MSc Business Analytics
-
-```
-=
