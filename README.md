@@ -1,71 +1,89 @@
-# Online Retail: Customer Value & RFM Segmentation
+# Online Retail Customer Value Analysis (RFM Segmentation)
 
-**Goal:** Identify which customers and products drive most revenue, and turn that into clear, actionable segments for targeted marketing and retention.
+## Overview
+This project analyses transactional data from a UK-based online retailer to identify **which customers and products drive the majority of revenue**. Using **RFM (Recency, Frequency, Monetary) segmentation**, revenue concentration (Pareto/Lorenz), and product contribution analysis, the workflow converts raw invoice-level data into **actionable customer segments** for targeted marketing, retention, and inventory decisions.
+
+The analysis shows that revenue is **highly concentrated**: a relatively small share of customers and products accounts for a disproportionate share of total sales.
+
+---
 
 ## Dataset
+**Source:** UCI Machine Learning Repository — *Online Retail II*  
+**Link:** http://archive.ics.uci.edu/dataset/502/online+retail+ii  
 
-- Source: UCI Machine Learning Repository – Online Retail II  
-- Link: http://archive.ics.uci.edu/dataset/502/online+retail+ii  
-- Data: Two years of UK-based online retail transactions (invoices, products, quantities, prices, customer IDs).
+**Description:**  
+Two years of UK-based online retail transaction data, including invoices, products, quantities, prices, and customer identifiers.
 
-This repo does **not** include the raw Excel or the cleaned parquet file due to size.  
-To reproduce the analysis:
+> **Note on data files:**  
+> The raw Excel file is **not included in this repository** due to file size constraints. All results are fully reproducible using the publicly available dataset via the link above.
 
-1. Download the dataset from UCI.
-2. Place `online_retail_II.xlsx` in a local `data/` folder.
-3. Open and run `online_retail_customer_value_rfm_analysis.ipynb`.
+---
 
-The notebook will:
-- Load and clean the raw data
-- Create a `Revenue` field
-- Perform RFM segmentation
-- Export the CSV tables and charts in this repo
+## Key Outputs
 
-## Key Insights
+### Figures (`reports/figures/`)
+- `revenue_distribution_client_ready.png` — Transaction revenue distribution (log scale)
+- `customer_revenue_pareto.png` — Customer revenue concentration (Pareto/Lorenz curve)
+- `rfm_segment_overview.png` — Customers, revenue, and revenue share by segment
+- `rfm_segment_product_heatmap.png` — Revenue by RFM segment × top products
+- `top_products_high_value_customers.png` — Top products for high-value customers
+- `appendix_country_revenue.png` — High-value customer revenue by country (appendix)
 
-- **Top 20% of customers generate ~80% of total revenue**  
-  → Strong Pareto / Lorenz effect (see `customer_revenue_pareto.png`)
+### Tables (`outputs/tables/`)
+- `rfm_customer_segments.csv` — Customer-level RFM scores and segment labels
+- `rfm_segment_summary.csv` — Segment-level customer counts and revenue metrics
+- `rfm_segment_product_pivot.csv` — Revenue by RFM segment × product matrix
 
-- **Champions segment**
-  - ~800 customers
-  - ~63% of total revenue  
-  → High priority for VIP treatment, early access and retention programmes
+---
 
-- **At Risk High-Value segment**
-  - Smaller share of customers
-  - ~12% of revenue at risk  
-  → Ideal target for win-back campaigns and time-bound offers
+## Reproducibility (Run Locally)
 
-- **Product concentration**
-  - A small set of SKUs drives most revenue for Champions and other high-value segments  
-  → See `top_products_high_value_customers.png` and `rfm_segment_product_heatmap.png`  
-  → Supports SKU prioritisation, inventory planning and targeted promotions
+### 1) Set up environment
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+````
 
-- **Country concentration**
-  - UK contributes the vast majority of revenue  
-  → `appendix_country_revenue.png` keeps this as an appendix insight
+### 2) Download the dataset
 
-## Files in This Repository
+Download the Excel file from the UCI link above and place it locally at:
 
-- `online_retail_customer_value_rfm_analysis.ipynb` – full analysis notebook
+```text
+data/raw/online_retail_II.xlsx
+```
 
-**Outputs (figures)**  
-- `revenue_distribution_client_ready.png` – transaction revenue distribution (log scale)  
-- `customer_revenue_pareto.png` – Pareto / Lorenz curve of customer revenue  
-- `rfm_segment_overview.png` – customers, revenue and revenue share by segment  
-- `rfm_segment_product_heatmap.png` – revenue by RFM segment × top products  
-- `top_products_high_value_customers.png` – top SKUs for high-value customers  
-- `appendix_country_revenue.png` – high-value revenue by country
+### 3) Run the analysis
 
-**Outputs (tables)**  
-- `rfm_customer_segments.csv` – customer-level RFM scores and segment labels  
-- `rfm_segment_summary.csv` – segment-level counts and revenue metrics  
-- `rfm_segment_product_pivot.csv` – segment × product revenue matrix
+Open and run:
 
-## How to Run Locally
+```text
+notebooks/online_retail_customer_value_rfm_analysis.ipynb
+```
 
-1. Create and activate a virtual environment (optional but recommended).
-2. Install dependencies (example):
+The notebook performs:
 
-   ```bash
-   pip install pandas numpy matplotlib seaborn openpyxl
+* Data cleaning and validation
+* Revenue calculation (Quantity × Price)
+* RFM scoring and segmentation
+* Export of all figures and summary tables included in this repository
+
+---
+
+## Skills Demonstrated
+
+* Customer analytics & segmentation (RFM)
+* Revenue concentration analysis (Pareto / Lorenz)
+* Data cleaning and validation
+* Business-oriented data visualisation
+* Translating transactional data into strategic insights
+
+---
+
+## Author
+
+**Ester Marku**
+MSc Business Analytics
+
+```
+=
