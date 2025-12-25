@@ -63,7 +63,7 @@ The notebook performs:
 
 ---
 
-## Tools & Skills Demonstrated
+Tools & Skills Demonstrated
 
 * Python (pandas, numpy, matplotlib, seaborn)
 * Jupyter Notebook
@@ -74,7 +74,7 @@ The notebook performs:
 
 ---
 
-## Author
+Author
 
-**Ester Marku**
+Ester Marku
 MSc Business Analytics
