@@ -37,12 +37,12 @@ Understanding **who the most valuable customers are**, **which products they pur
 - **Geographic Scope:** United Kingdom and international customers  
 
 ### Key Variables
-- Invoice Number
-- Customer ID
-- Invoice Date
-- Quantity
-- Unit Price
-- Country
+- Invoice Number  
+- Customer ID  
+- Invoice Date  
+- Quantity  
+- Unit Price  
+- Country  
 
 ---
 
@@ -66,14 +66,14 @@ Customers were segmented using:
 - **Monetary:** Total revenue contributed  
 
 Key segments include:
-- Champions
-- Loyal High-Value
-- At-Risk High-Value
-- Potential Loyalists
-- Needs Attention
-- Promising
-- New Customers
-- Hibernating
+- Champions  
+- Loyal High-Value  
+- At-Risk High-Value  
+- Potential Loyalists  
+- Needs Attention  
+- Promising  
+- New Customers  
+- Hibernating  
 
 ### Product-Level Analysis
 - Revenue by product within each RFM segment
