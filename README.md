@@ -1,133 +1,71 @@
-# Online Retail – Customer Value & RFM Segmentation Analysis
+# Online Retail – Customer Value & RFM Segmentation
 
-## Executive Summary
-
-This project analyses the **UCI Online Retail II dataset** to identify which customers and products drive the majority of revenue in an online retail business. Using descriptive statistics, Pareto analysis, and **RFM (Recency–Frequency–Monetary) segmentation**, the analysis demonstrates how revenue optimisation is driven by **customer and product focus rather than volume growth**.
-
-The results show that transaction values are highly right-skewed and that a small proportion of customers generate a disproportionate share of total revenue. High-value customers concentrate spending on a limited set of products, creating clear opportunities for targeted retention strategies, personalised marketing, and inventory prioritisation.
-
----
-
-## Business Context
-
-Online retail businesses typically face:
-- High customer acquisition costs
-- Large product catalogues
-- Uneven revenue contribution across customers and products
-
-Understanding **who the most valuable customers are**, **which products they purchase**, and **which segments are at risk** is essential for sustainable revenue growth. This project demonstrates how customer segmentation and revenue concentration analysis can support data-driven commercial decision-making.
-
----
-
-## Business Questions
-
-1. How is revenue distributed across transactions and customers?
-2. Which customer segments contribute the most to total revenue?
-3. Which high-value customer segments are at risk of churn?
-4. Which products drive revenue among high-value customers?
-5. How concentrated is revenue across customers and products?
-
----
+**Goal:** Identify which customers and products drive most revenue, and turn that into clear, actionable segments for targeted marketing and retention.
 
 ## Dataset
 
-- **Source:** UCI Machine Learning Repository – Online Retail II  
-- **Time Period:** 2009–2011  
-- **Business Type:** UK-based online retailer  
-- **Geographic Scope:** United Kingdom and international customers  
+- Source: UCI Machine Learning Repository – Online Retail II  
+- Link: http://archive.ics.uci.edu/dataset/502/online+retail+ii  
+- Data: Two years of UK-based online retail transactions (invoices, products, quantities, prices, customer IDs).
 
-### Key Variables
-- Invoice Number  
-- Customer ID  
-- Invoice Date  
-- Quantity  
-- Unit Price  
-- Country  
+This repo does **not** include the raw Excel or the cleaned parquet file due to size.  
+To reproduce the analysis:
 
----
+1. Download the dataset from UCI.
+2. Place `online_retail_II.xlsx` in a local `data/` folder.
+3. Open and run `online_retail_customer_value_rfm_analysis.ipynb`.
 
-## Methodology
-
-### Data Preparation
-- Removed cancelled and invalid transactions
-- Filtered negative quantities and prices
-- Calculated transaction-level revenue
-- Aggregated customer-level metrics
-
-### Exploratory Data Analysis
-- Log-scaled revenue distributions to capture heavy-tailed behaviour
-- Compared mean and median transaction values
-- Used a Pareto (Lorenz) curve to assess revenue concentration
-
-### RFM Segmentation
-Customers were segmented using:
-- **Recency:** Days since last purchase  
-- **Frequency:** Number of transactions  
-- **Monetary:** Total revenue contributed  
-
-Key segments include:
-- Champions  
-- Loyal High-Value  
-- At-Risk High-Value  
-- Potential Loyalists  
-- Needs Attention  
-- Promising  
-- New Customers  
-- Hibernating  
-
-### Product-Level Analysis
-- Revenue by product within each RFM segment
-- Identification of top products for high-value customers
-- Segment–product revenue heatmap
-
-### Geographic Analysis (Appendix)
-- High-value customer revenue by country
-
----
+The notebook will:
+- Load and clean the raw data
+- Create a `Revenue` field
+- Perform RFM segmentation
+- Export the CSV tables and charts in this repo
 
 ## Key Insights
 
-- Revenue is **highly concentrated**, with a small proportion of customers generating the majority of total revenue.
-- Transaction values are **right-skewed**, where a few large orders disproportionately impact performance.
-- **Champions** generate the largest revenue share despite representing a minority of customers.
-- **At-Risk High-Value** customers present a significant retention opportunity.
-- High-value customers repeatedly purchase a **small set of products**.
-- Revenue is predominantly generated in the **United Kingdom**, with smaller international contributions.
+- **Top 20% of customers generate ~80% of total revenue**  
+  → Strong Pareto / Lorenz effect (see `customer_revenue_pareto.png`)
 
----
+- **Champions segment**
+  - ~800 customers
+  - ~63% of total revenue  
+  → High priority for VIP treatment, early access and retention programmes
 
-## Visual Outputs
+- **At Risk High-Value segment**
+  - Smaller share of customers
+  - ~12% of revenue at risk  
+  → Ideal target for win-back campaigns and time-bound offers
 
-The project includes:
-- Revenue distribution (log scale)
-- RFM segment overview (customers, revenue, revenue share)
-- RFM segment × product revenue heatmap
-- Top products for high-value customers
-- Customer revenue Pareto curve
-- Geographic revenue breakdown (appendix)
+- **Product concentration**
+  - A small set of SKUs drives most revenue for Champions and other high-value segments  
+  → See `top_products_high_value_customers.png` and `rfm_segment_product_heatmap.png`  
+  → Supports SKU prioritisation, inventory planning and targeted promotions
 
-All figures are stored in the `figures/` directory.
+- **Country concentration**
+  - UK contributes the vast majority of revenue  
+  → `appendix_country_revenue.png` keeps this as an appendix insight
 
----
+## Files in This Repository
 
-## Repository Structure
+- `online_retail_customer_value_rfm_analysis.ipynb` – full analysis notebook
 
-```text
-online-retail-customer-value-rfm/
-│
-├── data/
-│   ├── rfm_segment_summary.csv
-│   ├── rfm_segment_product_pivot.csv
-│   └── rfm_customer_segments.csv
-│
-├── figures/
-│   ├── revenue_distribution.png
-│   ├── rfm_segment_overview.png
-│   ├── rfm_segment_product_heatmap.png
-│   ├── top_products_high_value_customers.png
-│   └── customer_revenue_pareto.png
-│
-├── notebook/
-│   └── online_retail_customer_value_rfm_analysis.ipynb
-│
-└── README.md
+**Outputs (figures)**  
+- `revenue_distribution_client_ready.png` – transaction revenue distribution (log scale)  
+- `customer_revenue_pareto.png` – Pareto / Lorenz curve of customer revenue  
+- `rfm_segment_overview.png` – customers, revenue and revenue share by segment  
+- `rfm_segment_product_heatmap.png` – revenue by RFM segment × top products  
+- `top_products_high_value_customers.png` – top SKUs for high-value customers  
+- `appendix_country_revenue.png` – high-value revenue by country
+
+**Outputs (tables)**  
+- `rfm_customer_segments.csv` – customer-level RFM scores and segment labels  
+- `rfm_segment_summary.csv` – segment-level counts and revenue metrics  
+- `rfm_segment_product_pivot.csv` – segment × product revenue matrix
+
+## How to Run Locally
+
+1. Create and activate a virtual environment (optional but recommended).
+2. Install dependencies (example):
+
+   ```bash
+   pip install pandas numpy matplotlib seaborn openpyxl
