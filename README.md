@@ -16,7 +16,7 @@
 Marketing teams operate with constrained budgets while customer value is **unevenly distributed**.  
 This project applies **RFM (Recency, Frequency, Monetary) segmentation** to identify where marketing spend delivers the **highest return** and where resources are diluted across low-value customers.
 
-The objective is **decision support**, not just segmentation—translating customer data into **clear, actionable marketing and retention strategies** under real-world data constraints.
+The objective is **decision support**, not just segmentation by translating customer data into **clear, actionable marketing and retention strategies** under real-world data constraints.
 
 ---
 
