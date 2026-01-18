@@ -1,4 +1,4 @@
-# Customer Value Segmentation for Marketing Optimization  
+# Customer Value Segmentation for Marketing Optimisation  
 **RFM Analysis | Business-First Customer Analytics**
 
 ---
