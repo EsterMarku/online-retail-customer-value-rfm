@@ -162,6 +162,6 @@ It reflects how analytics creates impact **beyond models and charts**.
 ## Author
 **Ester Marku**  
 MSc Business Analytics  
-Customer Analytics • Marketing Optimization • Data-Driven Decision Making  
+Customer Analytics • Marketing Optimisation • Data-Driven Decision Making  
 
 
